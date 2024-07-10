@@ -1,8 +1,7 @@
 {
 	"name": "rh-mp-drawer",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "rh mp custom drawer",
-	"main": "miniprogram_dist/index.js",
 	"scripts": {
 		"dev": "gulp dev --develop",
 		"watch": "gulp watch --develop --watch",
