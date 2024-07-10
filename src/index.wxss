@@ -1,10 +1,101 @@
-/* slide-view/slide-view.wxss */
-.movable-view{
-  display: flex;
-  direction: row;
-  overflow: hidden;
+/* Style for the drawer container */
+.drawer-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: opacity 0.3s ease;
 }
 
-.container {
-  overflow: hidden;
+/* Common style for the drawer content */
+.drawer-content {
+    background: #fff;
+    text-align: center;
+    padding: 16rpx;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: auto;
+}
+
+/* Bottom to top */
+.drawer-bottom .drawer-content {
+    border-radius: 16rpx 16rpx 0 0;
+    box-shadow: 0 -4rpx 8rpx rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 10%;
+    max-height: 80%;
+    transform: translateY(100%);
+}
+.drawer-bottom.show .drawer-content {
+    transform: translateY(0);
+}
+.drawer-bottom.show {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* Top to bottom */
+.drawer-top .drawer-content {
+    border-radius: 0 0 16rpx 16rpx;
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 10%;
+    max-height: 80%;
+    transform: translateY(-100%);
+}
+.drawer-top.show .drawer-content {
+    transform: translateY(0);
+}
+.drawer-top.show {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Left to right */
+.drawer-left .drawer-content {
+    border-radius: 0 16rpx 16rpx 0;
+    box-shadow: 4rpx 0 8rpx rgba(0, 0, 0, 0.1);
+    min-width: 10%;
+    max-width: 80%;
+    height: 100%;
+    transform: translateX(-100%);
+}
+.drawer-left.show .drawer-content {
+    transform: translateX(0);
+}
+.drawer-left.show {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Right to left */
+.drawer-right .drawer-content {
+    border-radius: 16rpx 0 0 16rpx;
+    box-shadow: -4rpx 0 8rpx rgba(0, 0, 0, 0.1);
+    min-width: 10%;
+    max-width: 80%;
+    height: 100%;
+    transform: translateX(100%);
+}
+.drawer-right.show .drawer-content {
+    transform: translateX(0);
+}
+.drawer-right.show {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+/* Hide the drawer container */
+.drawer-container.hide {
+    opacity: 0;
 }

@@ -1,11 +1,32 @@
-<!--slide-view/slide-view.wxml-->
-<movable-area class="container" style="width: {{width}}rpx; height: {{height}}rpx;">
-  <movable-view direction="horizontal" class="movable-view" out-of-bounds="{{out}}" damping="20" x="{{x}}" style="width: {{width + slideWidth}}rpx; height: {{height}}rpx;" inertia bindtouchend="onTouchEnd" bindtouchstart="onTouchStart" bindchange="onChange">
-    <view class="left" >
-      <slot name= "left"></slot>
+<!-- drawer.wxml -->
+<!-- 
+  Custom Component: drawer
+
+  @params:
+  - show: Boolean
+      Description: Determines whether the drawer is visible or hidden.
+      Default: false
+      Example: show="{{true}}"
+
+  - direction: String
+      Description: Specifies the direction from which the drawer slides in. 
+      Possible values: 'bottom', 'top', 'left', 'right'
+      Default: 'bottom'
+      Example: direction="{{'left'}}"
+
+  @example:
+      - usingCustomDrawer.wxml
+        <custom-drawer show="{{showCustomModal}}" direction="top">
+            // Custom content for the drawer
+            <view>Drawer Content Here</view>
+        </custom-drawer>
+        // trigger to show custom-drawer
+        <button bindtap="openCustomDrawer">CustomDrawer</button>
+-->
+<view class="drawer-container drawer-{{direction}} {{ show ? 'show' : 'hide' }}" 
+    catchtap="handleBackgroundClick">
+    <!-- drawer content -->
+    <view class="drawer-content" catchtap="preventBubble">
+            <slot></slot> <!-- Slot for content injection -->
     </view>
-    <view class= "right">
-      <slot name="right"></slot>
-    </view>
-  </movable-view>
-</movable-area>
+</view>

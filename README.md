@@ -1,53 +1,55 @@
-> 本仓库不再维护，有需求请使用[weui-miniprogram](https://github.com/wechat-miniprogram/weui-miniprogram)的slideview组件。
+# custom-drawer
 
-# slide-view
+Mini program custom components
 
-小程序自定义组件
+> Using this component requires the Mini Program Basic Library version 2.2.1 or above, as well as the npm build of the developer tools. Specific details can be found in the [official npm documentation](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html).
 
-> 使用此组件需要依赖小程序基础库 2.2.1 以上版本，同时依赖开发者工具的 npm 构建。具体详情可查阅[官方 npm 文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
+## Instructions
 
-## 使用效果
-
-![slide-view](./docs/slide-view.gif)
-
-> PS：此组件默认只携带基本样式，若想要获得上图中的效果，可参考 [tools/demo](./tools/demo/pages/index/index.wxss) 中的例子实现。
-
-## 使用方法
-
-1. 安装 slide-view
+1. Install custom-drawer
 
 ```
-npm install --save miniprogram-slide-view
+npm install --save rh-mp-drawer
 ```
 
-2. 在需要使用 slide-view 的页面 page.json 中添加 slide-view 自定义组件配置
+2. Add custom-drawer custom component configuration in page.json of the page that needs to use custom-drawer
 
 ```json
 {
   "usingComponents": {
-    "slide-view": "miniprogram-slide-view"
+    "custom-drawer": "rh-mp-drawer"
   }
 }
 ```
 
-3. WXML 文件中引用 slide-view
-
-每一个 slide-view 提供两个`<slot>`节点，用于承载组件引用时提供的子节点。left 节点用于承载静止时 slide-view 所展示的节点，此节点的宽高应与传入 slide-view 的宽高相同。right 节点用于承载滑动时所展示的节点，其宽度应于传入 slide-view 的 slideWidth 相同。
+3. Reference: WXML and js slide-view
 
 ``` xml
-<slide-view class="slide" width="320" height="100" slideWidth="200">
-  <view slot="left">这里是插入到组内容</view>
-  <view slot="right">
-    <view>标为已读</view>
-    <view>删除</view>
-  </view>
-</slide-view>
+  <custom-drawer show="{{showCustomModal}}" direction="top">
+      <view>Drawer Content Here</view>
+  </custom-drawer>
+  <button bindtap="openCustomDrawer">CustomDrawer</button>
 ```
 
-**slide-view的属性介绍如下：**
+``` js
+  Page({
+    openCustomDrawer() {
+      this.setData({showCustomModal: true})
+    },
+  })
+```
 
-| 属性名                   | 类型         | 单位         | 默认值                    | 是否必须    | 说明                                        |
-|-------------------------|--------------|--------------|---------------------------|------------|---------------------------------------------|
-| width                   | Number       | rpx          | 显示屏幕的宽度             | 是          | slide-view组件的宽度                        |
-| height                  | Number       | rpx          | 0                         | 是          | slide-view组件的高度                        |
-| slide-width             | Number       | rpx          | 0                         | 是          | 滑动展示区域的宽度（默认高度与slide-view相同）|
+**slide-view, The properties：**
+
+### `show`
+
+- **Type**: `Boolean`
+- **Description**: Determines whether the drawer is visible or hidden.
+- **Default**: `false`
+
+### `direction`
+
+- **Type**: `String`
+- **Description**: Specifies the direction from which the drawer slides in.
+- **Possible values**: `'bottom'`, `'top'`, `'left'`, `'right'`
+- **Default**: `'bottom'`
