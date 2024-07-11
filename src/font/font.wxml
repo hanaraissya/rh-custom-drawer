@@ -1,0 +1,5 @@
+<view>
+  <text style="font-family: 'BRI Digital Text, sans-serif'; font-size: {{fontSize}}; font-style: {{fontStyle}}; color: {{color}}; text-decoration: {{textDecoration}}; font-variant: {{fontVariant}}; font-weight: {{fontWeight}}; line-height: {{lineHeight}};">
+    <slot></slot>
+  </text>
+</view>
