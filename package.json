@@ -1,7 +1,7 @@
 {
-	"name": "rh-mp-drawer",
-	"version": "0.0.4",
-	"description": "rh mp custom drawer",
+	"name": "rh-mp-cc",
+	"version": "0.0.0",
+	"description": "rh mp custom components",
 	"scripts": {
 		"dev": "gulp dev --develop",
 		"watch": "gulp watch --develop --watch",
