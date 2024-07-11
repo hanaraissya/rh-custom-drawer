@@ -8,6 +8,10 @@
     font-display: swap;
 }
 
+.custom-font-family {
+    font-family: 'BRI Digital Text';
+}
+
 /* Title 1/Bold */
 .font-title-1-bold {
     font-family: 'BRI Digital Text';
